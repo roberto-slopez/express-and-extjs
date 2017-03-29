@@ -11,8 +11,9 @@ let port = process.env.PORT || 3000;
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
-app.use(require('./middlewares'))
-app.use(require('./controllers'))
+// TODO: habilitar cuando se este usando
+//app.use(require('./BackEnd/middlewares'))
+app.use(require('./BackEnd/controllers'))
 
 app.listen(3000, () => {
   console.log('Listening on port 3000...');
