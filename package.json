@@ -1,0 +1,22 @@
+{
+    "name": "ExtJS app",
+    "version": "1.0.0",
+    "description": "Extjs for everyone.",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "keywords": [
+        "extjs",
+        "node",
+        "express"
+    ],
+    "author": "esanchez",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.9.5",
+        "jade": "^1.7.0",
+        "body-parser": "^1.12.3"
+    },
+    "devDependencies": {}
+}
