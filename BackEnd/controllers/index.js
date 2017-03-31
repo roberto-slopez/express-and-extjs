@@ -10,7 +10,7 @@ let router = express.Router();
 router.get('/doc', function(req, res) {
     console.log('Request URL:', req.originalUrl);
     res.json({
-        message: 'hello world'
+        message: 'hello world 2017'
     });
     next();
 }, function (req, res, next) {

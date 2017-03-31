@@ -3,11 +3,18 @@
  * @class {User}
  */
 module.exports = class User {
-    constructor() {
+    constructor(uuid) {
+        this.uuid = uuid;
     }
-
+    getUuid() {
+        return this.uuid;
+    }
     getCurrentUser() {
-        return {};
+        let _this = this;
+        return {
+            'uuid': _this.getUuid(),
+            'name': 'Juan Lopez'
+        };
         // const _this = this;
         // return new Promise((resolve, reject) => {
         // });

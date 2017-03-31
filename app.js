@@ -9,29 +9,6 @@ let port = process.env.PORT || 3000;
 app.use('/', require('./BackEnd/controllers/index'))
 app.use('/user', require('./BackEnd/controllers/user'))
 
-// /**
-//  * Middleware de nivel de aplicación
-//  * @param  {[type]}   req  [description]
-//  * @param  {[type]}   res  [description]
-//  * @param  {Function} next [description]
-//  * @return {[type]}        [description]
-//  */
-// app.use(function (req, res, next) {
-//   console.log('Time:', Date.now());
-//   next();
-// });
-// /**
-//  * Middleware de manejo de errores
-//  * @param  {[type]}   err  [description]
-//  * @param  {[type]}   req  [description]
-//  * @param  {[type]}   res  [description]
-//  * @param  {Function} next [description]
-//  * @return {[type]}        [description]
-//  */
-// app.use(function(err, req, res, next) {
-//   console.error(err.stack);
-//   res.status(500).send('Error!');
-// });
 /**
  * Middleware de terceros
  * @type {[type]}

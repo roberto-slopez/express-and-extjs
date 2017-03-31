@@ -8,8 +8,8 @@ let User = require('./../helpers/user');
  * @param  {[type]} res [description]
  * @return {[type]}     [description]
  */
-router.get('/current', function(req, res) {
-    const user = new User();
+router.put('/current', function(req, res) {
+    const user = new User('d7f14a07-91db-4f43-b582-090e3f996ffe');
     res.json(user.getCurrentUser());
     // user.getCurrentUser().then((data) => {
     //     res.json(data);
