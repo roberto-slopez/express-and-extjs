@@ -1,5 +1,6 @@
 let express = require('express')
 let router = express.Router();
+let User = require('./../helpers/user');
 
 /**
  * Middleware de nivel de direccionador
@@ -7,15 +8,12 @@ let router = express.Router();
  * @param  {[type]} res [description]
  * @return {[type]}     [description]
  */
-router.get('/doc', function(req, res) {
-    console.log('Request URL:', req.originalUrl);
-    res.json({
-        message: 'hello world'
-    });
-    next();
-}, function (req, res, next) {
-  console.log('Request Type:', req.method);
-  next();
+router.get('/current', function(req, res) {
+    const user = new User();
+    res.json(user.getCurrentUser());
+    // user.getCurrentUser().then((data) => {
+    //     res.json(data);
+    // });
 });
 
 module.exports = router;

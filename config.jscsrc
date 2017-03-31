@@ -1,0 +1,9 @@
+{
+  "preset": "airbnb",
+  "validateIndentation": 4,
+  "validateLineBreaks": "CRLF",
+  "disallowMixedSpacesAndTabs": true,
+  "maximumLineLength": 120,
+  "disallowTrailingWhitespace": true,
+  "requireCurlyBraces": null
+}
