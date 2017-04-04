@@ -21,7 +21,8 @@ Configuración básica para linter-jscs
 ```
 ## node-jscs
     https://github.com/jscs-dev/node-jscs/blob/master/OVERVIEW.md
-## Wiki
+## Links
 * Sencha doc http://docs.sencha.com/extjs/6.2.1/index.html
 * Sencha fiddle  https://fiddle.sencha.com
 * React views https://github.com/reactjs/express-react-views
+* Reactive programming http://reactivex.io/
