@@ -1,7 +1,6 @@
 # Full-Stack App (with ExtJS|ReactJS) and Express
 
 ## Instalar en atom
-* https://nodejs.org/es/   V7.X
 * https://github.com/AtomLinter/linter-jscs
 * https://github.com/AtomLinter/linter-jshint
 > Ejemplo de configuración para jshint
@@ -19,9 +18,9 @@ Configuración básica para linter-jscs
     "requireCurlyBraces": null
 }
 ```
-## node-jscs
-    https://github.com/jscs-dev/node-jscs/blob/master/OVERVIEW.md
 ## Links
+* JSCS https://github.com/jscs-dev/node-jscs/blob/master/OVERVIEW.md
+* V7.X https://nodejs.org/es/
 * Sencha doc http://docs.sencha.com/extjs/6.2.1/index.html
 * Sencha fiddle  https://fiddle.sencha.com
 * React views https://github.com/reactjs/express-react-views
