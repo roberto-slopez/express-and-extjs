@@ -25,3 +25,5 @@ Configuración básica para linter-jscs
 * Sencha fiddle  https://fiddle.sencha.com
 * React views https://github.com/reactjs/express-react-views
 * Reactive programming http://reactivex.io/
+    > https://github.com/stoeffel/awesome-frp-js
+    > https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
