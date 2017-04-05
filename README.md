@@ -23,6 +23,7 @@ Configuración básica para linter-jscs
 * V7.X https://nodejs.org/es/
 * Sencha doc http://docs.sencha.com/extjs/6.2.1/index.html
 * Sencha fiddle  https://fiddle.sencha.com
+* Sencha example http://examples.sencha.com/extjs/6.2.0/examples/
 * React views https://github.com/reactjs/express-react-views
 * Reactive programming http://reactivex.io/
     > https://github.com/stoeffel/awesome-frp-js
