@@ -28,3 +28,10 @@ Configuración básica para linter-jscs
 * Reactive programming http://reactivex.io/
     > https://github.com/stoeffel/awesome-frp-js
     > https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
+
+
+## CMD
+
+* compilar en modo desarrollo `sencha app build -dev`
+* compilar en modo production `sencha app build -pr`
+* compilar esparando cambios `sencha app watch`
