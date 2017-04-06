@@ -1,6 +1,6 @@
 /**
- * This class is the view model for the Main view of the application.
- */
+* This class is the view model for the Main view of the application.
+*/
 Ext.define('M5.view.main.MainModel', {
     extend: 'Ext.app.ViewModel',
 

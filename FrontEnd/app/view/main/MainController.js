@@ -16,6 +16,7 @@ Ext.define('M5.view.main.MainController', {
     onConfirm: function (choice) {
         if (choice === 'yes') {
             //
+            console.log(choice);
         }
     }
 });

@@ -12,7 +12,7 @@ Ext.define('M5.view.main.Main', {
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
-
+        'M5.view.main.Border',
         'M5.view.main.MainController',
         'M5.view.main.MainModel',
         'M5.view.main.List'
@@ -85,9 +85,9 @@ Ext.define('M5.view.main.Main', {
     }, {
         title: 'Users',
         iconCls: 'fa-user',
-        bind: {
-            html: '{loremIpsum}'
-        }
+        items: [{
+            xtype: 'layout-border'
+        }]
     }, {
         title: 'Groups',
         iconCls: 'fa-users',
