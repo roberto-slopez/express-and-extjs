@@ -16,7 +16,6 @@ Ext.define('M5.view.main.Fit', {
         title: 'Inner Panel',
         html: '<p>This panel is fit within its container.</p>',
         bodyPadding: 15,
-        ui: KitchenSink.profileName == 'neptune' ? 'light' : 'default',
         border: true
     }
 
