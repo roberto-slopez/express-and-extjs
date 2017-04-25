@@ -78,10 +78,11 @@ Ext.define('M5.view.main.Main', {
     items: [{
         title: 'Home',
         iconCls: 'fa-home',
-        layout: 'fit',
+        layout: 'anchor',
         // The following grid shares a store with the classic version's grid as well!
         items: [{
-            xtype: 'panelm5'
+            xtype: 'panelm5',
+            anchor: '100%'
         }]
     }]
 });

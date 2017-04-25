@@ -4,21 +4,34 @@
 Ext.define('M5.view.main.PanelM5', {
     extend: 'Ext.panel.Panel',
     xtype: 'panelm5',
-    width: 500,
-    height: 400,
+    layout: {
+        type: 'vbox',
+        align: 'stretch'
+    },
     defaults: {
+        flex: 1,
         margin: 10
     },
+
     bodyCls: "redcolor",
     items: [{
         title: 'Formulario',
 
         tbar: [{
-            text: "Guardar"
+            text: "Guardar",
+            handler: function(btn) {
+                var values = btn.up('form').getValues();
+                btn.up('form').reset();
+                var grid = btn.up('panel').up().down('grid');
+                grid.getStore().add(values);
+            }
         }, {
-            text: "Cancelar"
+            text: "Cancelar",
+            handler: function (btn) {
+                btn.up('form').reset();
+            }
         }],
-        border: 1,
+        border: true,
         bodyPadding: 10,
         xtype: 'form',
         defaultType: 'textfield',
@@ -31,29 +44,38 @@ Ext.define('M5.view.main.PanelM5', {
             name: 'last',
             allowBlank: false
         }, {
-            xtype: 'textfield',
             name: 'email',
             fieldLabel: 'Email Address',
             vtype: 'email'  // requires value to be a valid email address format
         }, {
-            xtype: 'datefield',
             anchor: '100%',
-            fieldLabel: 'From',
-            name: 'from_date',
-            maxValue: new Date()  // limited to the current date or prior
-        }, {
-            xtype: 'numberfield',
-            anchor: '100%',
-            allowExponential: false,
-            name: 'bottles',
-            fieldLabel: 'Bottles of Beer',
-            value: 99,
-            maxValue: 99,
-            minValue: 0
+            name: 'phone',
+            fieldLabel: 'Phone'
         }]
 
     }, {
         title: 'Panel',
-        xtype: 'panel'
+        xtype: 'panel',
+        border: true,
+        refenrence: 'griduser',
+        items: [{
+            xtype: 'grid',
+            store: Ext.create('M5.store.Usuario', {
+                extend: 'Ext.data.Store',
+                storeId: 'usuarios',
+                model: 'M5.model.User',
+                data: [
+                    { name: 'Lisa', email: 'lisa@simpsons.com', phone: '555-111-1224' },
+                    { name: 'Bart', email: 'bart@simpsons.com', phone: '555-222-1234' },
+                    { name: 'Homer', email: 'homer@simpsons.com', phone: '555-222-1244' },
+                    { name: 'Marge', email: 'marge@simpsons.com', phone: '555-222-1254' }
+                ]
+            }),
+            columns: [
+                { text: 'Name', dataIndex: 'name' },
+                { text: 'Email', dataIndex: 'email', flex: 1 },
+                { text: 'Phone', dataIndex: 'phone' }
+            ]
+        }]
     }]
 });
