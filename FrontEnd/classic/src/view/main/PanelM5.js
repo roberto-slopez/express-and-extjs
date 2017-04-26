@@ -73,6 +73,13 @@ Ext.define('M5.view.main.PanelM5', {
                 proxy: {
                     type: 'ajax',
                     url: 'http://localhost:3000/user/current',
+                    actionMethods: {
+                        create: 'POST',
+                        read: 'POST',
+                        update: 'POST',
+                        destroy: 'POST'
+                    },
+                    paramsAsJson: true,
                     reader: {
                         type: 'json',
                         rootProperty: 'data'
