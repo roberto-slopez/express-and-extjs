@@ -19,7 +19,7 @@ Ext.define('M5.view.main.PanelM5', {
 
         tbar: [{
             text: "Guardar",
-            handler: function(btn) {
+            handler: function (btn) {
                 var values = btn.up('form').getValues();
                 btn.up('form').reset();
                 var grid = btn.up('panel').up().down('grid');
@@ -39,7 +39,7 @@ Ext.define('M5.view.main.PanelM5', {
             fieldLabel: 'First Name',
             name: 'first',
             allowBlank: false
-        },{
+        }, {
             fieldLabel: 'Last Name',
             name: 'last',
             allowBlank: false
@@ -60,22 +60,37 @@ Ext.define('M5.view.main.PanelM5', {
         refenrence: 'griduser',
         items: [{
             xtype: 'grid',
-            store: Ext.create('M5.store.Usuario', {
-                extend: 'Ext.data.Store',
+            store: new Ext.data.Store({
+                autoLoad: true,
                 storeId: 'usuarios',
-                model: 'M5.model.User',
-                data: [
-                    { name: 'Lisa', email: 'lisa@simpsons.com', phone: '555-111-1224' },
-                    { name: 'Bart', email: 'bart@simpsons.com', phone: '555-222-1234' },
-                    { name: 'Homer', email: 'homer@simpsons.com', phone: '555-222-1244' },
-                    { name: 'Marge', email: 'marge@simpsons.com', phone: '555-222-1254' }
-                ]
+                fields: [
+                    { name: 'first', type: 'string' },
+                    { name: 'last', type: 'string' },
+                    { name: 'email', type: 'string' },
+                    { name: 'phone', type: 'string' }
+
+                ],
+                proxy: {
+                    type: 'ajax',
+                    url: 'http://localhost:3000/user/current',
+                    reader: {
+                        type: 'json',
+                        rootProperty: 'data'
+                    }
+                }
             }),
             columns: [
-                { text: 'Name', dataIndex: 'name' },
-                { text: 'Email', dataIndex: 'email', flex: 1 },
-                { text: 'Phone', dataIndex: 'phone' }
-            ]
+                {text: 'First Name', dataIndex: 'first'},
+                {text: 'Last Name', dataIndex: 'last'},
+                {text: 'Email', dataIndex: 'email', flex: 1},
+                {text: 'Phone', dataIndex: 'phone'}
+            ],
+            listeners: {
+                cellclick: function (grid, td, cellIndex, record, tr, rowIndex) {
+                    var form = grid.up().up().up().down("form");
+                    form.getForm().setValues(record.getData());
+                }
+            }
         }]
     }]
 });
