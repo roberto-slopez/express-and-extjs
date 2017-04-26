@@ -20,10 +20,22 @@ Ext.define('M5.view.main.PanelM5', {
         tbar: [{
             text: "Guardar",
             handler: function (btn) {
-                var values = btn.up('form').getValues();
+                var form = btn.up('form');
                 btn.up('form').reset();
                 var grid = btn.up('panel').up().down('grid');
-                grid.getStore().add(values);
+                if (form.isSelection) {
+                    form.isSelection = false;
+                    var record = grid.getStore().getAt(form.currentSelection);
+                    Ext.Object.each(from.getValues(), function(key, value) {
+                        record.set(key, value);
+                    });
+                    record.commit();
+                    //record.beginEdit();
+                    //endEdit ( [silent] , [modifiedFieldNames] )
+                    //record.endEdit();
+                } else {
+                    grid.getStore().add(form.getValues());
+                }
             }
         }, {
             text: "Cancelar",
@@ -95,6 +107,8 @@ Ext.define('M5.view.main.PanelM5', {
             listeners: {
                 cellclick: function (grid, td, cellIndex, record, tr, rowIndex) {
                     var form = grid.up().up().up().down("form");
+                    form.isSelection = true;
+                    form.currentSelection = rowIndex;
                     form.getForm().setValues(record.getData());
                 }
             }
