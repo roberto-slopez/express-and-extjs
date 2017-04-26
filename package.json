@@ -17,7 +17,8 @@
     "body-parser": "^1.12.3",
     "cookie-parser": "^1.4.3",
     "express": "^4.9.5",
-    "jade": "^1.7.0"
+    "jade": "^1.7.0",
+    "cors": "^2.8.1"
   },
   "devDependencies": {}
 }

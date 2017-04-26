@@ -4,6 +4,13 @@ let app = express();
 let bodyParser = require('body-parser');
 let port = process.env.PORT || 3000;
 
+let cors = require('cors');
+let corsOptions = {
+    // Some legacy browsers (IE11, various SmartTVs) choke on 204
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 // TODO: habilitar cuando se este usando
 //app.use(require('./BackEnd/middlewares'))
 app.use('/', require('./BackEnd/controllers/index'))
