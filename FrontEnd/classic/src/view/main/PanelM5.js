@@ -21,21 +21,38 @@ Ext.define('M5.view.main.PanelM5', {
             text: "Guardar",
             handler: function (btn) {
                 var form = btn.up('form');
-                btn.up('form').reset();
                 var grid = btn.up('panel').up().down('grid');
+                var data = form.getValues();
+                if (form.isSelection) {
+                    var temp = grid.getStore().getAt(form.currentSelection);
+                    data.id = temp.get('id');
+                }
+
+                Ext.Ajax.request({
+                    url: 'http://localhost:3000/user/current',
+                    method: form.isSelection ? 'PUT' : 'POST',
+                    jsonData: JSON.stringify({
+                        data: data
+                    }),
+                    success: function (response, opts) {
+                        console.log(response);
+                    },
+                    failure: function (response, opts) {
+                    }
+                });
+
                 if (form.isSelection) {
                     form.isSelection = false;
                     var record = grid.getStore().getAt(form.currentSelection);
-                    Ext.Object.each(from.getValues(), function(key, value) {
+                    Ext.Object.each(form.getValues(), function (key, value) {
                         record.set(key, value);
                     });
                     record.commit();
-                    //record.beginEdit();
-                    //endEdit ( [silent] , [modifiedFieldNames] )
-                    //record.endEdit();
                 } else {
-                    grid.getStore().add(form.getValues());
+                    grid.getStore().add(data);
                 }
+
+                btn.up('form').reset();
             }
         }, {
             text: "Cancelar",
@@ -76,21 +93,15 @@ Ext.define('M5.view.main.PanelM5', {
                 autoLoad: true,
                 storeId: 'usuarios',
                 fields: [
-                    { name: 'first', type: 'string' },
-                    { name: 'last', type: 'string' },
-                    { name: 'email', type: 'string' },
-                    { name: 'phone', type: 'string' }
-
+                    {name: 'first', type: 'string'},
+                    {name: 'last', type: 'string'},
+                    {name: 'email', type: 'string'},
+                    {name: 'phone', type: 'string'},
+                    {name: 'id', type: 'string'}
                 ],
                 proxy: {
                     type: 'ajax',
                     url: 'http://localhost:3000/user/current',
-                    actionMethods: {
-                        create: 'POST',
-                        read: 'POST',
-                        update: 'POST',
-                        destroy: 'POST'
-                    },
                     paramsAsJson: true,
                     reader: {
                         type: 'json',

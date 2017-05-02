@@ -13,7 +13,7 @@ Ext.define('M5.Application', {
     ],
     
     launch: function () {
-        // TODO - Launch the application
+        Ext.Ajax.cors = true;
     },
 
     onAppUpdate: function () {

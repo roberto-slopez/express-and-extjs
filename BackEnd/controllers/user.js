@@ -1,27 +1,57 @@
-let express = require('express')
+'use strict';
+let express = require('express');
 let router = express.Router();
 let User = require('./../helpers/user');
+let r = require('rethinkdbdash')({
+    port: 28015,
+    host: 'localhost',
+    db: 'curso'
+});
+const uuidV1 = require('uuid/v1');
 
-/**
- * Middleware de nivel de direccionador
- * @param  {[type]} req [description]
- * @param  {[type]} res [description]
- * @return {[type]}     [description]
- */
-router.post('/current', function(req, res) {
-    //const user = new User('d7f14a07-91db-4f43-b582-090e3f996ffe');
-    res.json({
-        data: [
-            {first: 'Lisa', last: 'Simpson', email: 'lisa@simpsons.com', phone: '555-111-1224'},
-            {first: 'Bart2', last: 'Simpson2', email: 'bart2@simpsons.com', phone: '2555-222-1234'},
-            {first: 'Bart', last: 'Simpson', email: 'bart@simpsons.com', phone: '555-222-1234'},
-            {first: 'Homer', last: 'Simpson', email: 'homer@simpsons.com', phone: '555-222-1244'},
-            {first: 'Marge', last: 'Simpson', email: 'marge@simpsons.com', phone: '555-222-1254'}
-        ]
-    });
-    // user.getCurrentUser().then((data) => {
-    //     res.json(data);
-    // });
+router.post('/current', function (req, res) {
+    r.table("user")
+        .insert(req.body.data)
+        .run()
+        .then(function(response){
+            res.json({
+                success: true,
+                uuid: response.generated_keys[0]
+            });
+        })
+        .error(function(err){
+            console.log('error occurred ',err);
+        });
+});
+router.get('/current', function (req, res) {
+    r.table('user')
+        .run()
+        .then(function (response) {
+            res.json({
+                data: response,
+                success: true
+            });
+        })
+        .error(function (err) {
+            console.log(err);
+        });
+});
+router.put('/current', function (req, res) {
+    let currentId = req.body.data.id;
+    delete req.body.data.id;
+    r.table('user')
+        .get(currentId.toString())
+        .update(req.body.data)
+        .run()
+        .then(function(response){
+            res.json({
+                success: true,
+                data: response
+            });
+        })
+        .error(function(err){
+            console.log(err);
+        });
 });
 
 module.exports = router;

@@ -16,9 +16,12 @@
   "dependencies": {
     "body-parser": "^1.12.3",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.1",
     "express": "^4.9.5",
     "jade": "^1.7.0",
-    "cors": "^2.8.1"
+    "rethinkdb": "^2.3.3",
+    "rethinkdbdash": "^2.3.28",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {}
 }
