@@ -25,6 +25,8 @@ Configuración básica para linter-jscs
 * Sencha fiddle  https://fiddle.sencha.com
 * Sencha example http://examples.sencha.com/extjs/6.2.0/examples/
 * React views https://github.com/reactjs/express-react-views
+* rethinkdb https://www.rethinkdb.com/docs/guide/javascript/
+* rethinkdb install https://www.rethinkdb.com/docs/install/
 * Reactive programming http://reactivex.io/
     > https://github.com/stoeffel/awesome-frp-js
     > https://gist.github.com/staltz/868e7e9bc2a7b8c1f754
@@ -35,3 +37,13 @@ Configuración básica para linter-jscs
 * compilar en modo desarrollo `sencha app build -dev`
 * compilar en modo production `sencha app build -pr`
 * compilar esparando cambios `sencha app watch`
+
+## Iniciar proyecto
+
+* Instalar dependencias con el comando `npm install`
+* Copiar el framework `ext` a la carpeta FrontEnd
+* Compilar el proyecto `sencha app build -dev`
+* Iniciar el servidor de rethinkdb
+* Iniciar express `node app.js`
+* Iniciar webserver de sencha `sencha web start`
+
