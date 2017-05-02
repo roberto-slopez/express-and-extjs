@@ -43,7 +43,7 @@ Configuración básica para linter-jscs
 * Instalar dependencias con el comando `npm install`
 * Copiar el framework `ext` a la carpeta FrontEnd
 * Compilar el proyecto `sencha app build -dev`
-* Iniciar el servidor de rethinkdb
+* Iniciar el servidor de rethinkdb [base de datos: `curso`, tabla: `user`]
 * Iniciar express `node app.js`
 * Iniciar webserver de sencha `sencha web start`
 
